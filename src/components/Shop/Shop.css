@@ -1,0 +1,29 @@
+.search-box{
+    background-color: #222;
+    height: 70px;
+    /* width: 77.5%; */
+}
+.shop-container{
+    display: flex;
+}
+.product-container{
+    margin-left: 100px;
+    border-right: 2px solid lightgray;
+    margin-right: 20px;
+    width: 70%;
+}
+.search-box{
+    text-align: center;
+    color: white;
+}
+.search-box p{
+    margin-top: 0px;
+    padding: 10px;
+    font-size: 30px;
+}
+.search-box input{
+    width: 60%;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 20px;
+}
