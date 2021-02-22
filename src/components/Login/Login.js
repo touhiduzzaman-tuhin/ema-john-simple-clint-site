@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
+    document.title = 'Log in';
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     
     const [newUser, setNewUser] = useState(false);

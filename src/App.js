@@ -43,6 +43,9 @@ function App() {
         <PrivateRoute path="/shipment">
           <Shipment></Shipment>
         </PrivateRoute>
+        {/* <Route path="/shipment">
+          <Shipment></Shipment>
+        </Route> */}
         <Route path="/contact">
           <Contact></Contact>
         </Route>

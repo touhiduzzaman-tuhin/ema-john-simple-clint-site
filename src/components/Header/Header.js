@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import logo from '../../images/logo.png';
@@ -15,7 +16,7 @@ const Header = () => {
                 <Link to="/inventory">Manage Inventory</Link>
                 <Link to="/about">About</Link>
                 <Link to="/contact">Contact Us</Link>
-                <button onClick={() => setLoggedInUser({})}>Sign Out</button>
+                <Button variant='primary' className='mb-1' onClick={() => setLoggedInUser({})}>Sign Out</Button>
             </nav>
         </div>
     );

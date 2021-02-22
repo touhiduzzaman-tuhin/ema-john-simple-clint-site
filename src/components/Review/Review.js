@@ -5,8 +5,10 @@ import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../uti
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import happyImage from '../../images/giphy.gif';
+import { Button } from 'react-bootstrap';
 
 const Review = () => {
+    document.title = 'Product Review';
     const [cart, setCart] = useState([]);
     const [orderPlaced, setOrderPlaced] = useState(false);
     const history = useHistory();
@@ -65,7 +67,7 @@ const Review = () => {
                 <div className="cart-container">
                     <Cart cart={cart}>
                         <Link>
-                            <button onClick={handlePlaceOrder} className='addProductButton'>Prosed Check-Out</button>
+                            <Button onClick={handlePlaceOrder}>Prosed Check-Out</Button>
                         </Link>
                     </Cart>
                 </div>

@@ -4,6 +4,7 @@ import fakeData from '../../fakeData';
 import './Inventory.css';
 
 const Inventory = () => {
+    document.title = 'Add Product';
     const handleAddProduct = () => {
         fetch('https://sheltered-plateau-00354.herokuapp.com/addProduct', {
             method: 'POST',

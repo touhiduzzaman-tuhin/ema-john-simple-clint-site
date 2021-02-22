@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import './ReviewItem.css';
 
 const ReviewItem = (props) => {
@@ -10,7 +11,7 @@ const ReviewItem = (props) => {
             <hr/>
             <p className='text-danger'>Quantity: {quantity}</p>
             <p><small>Price: ${price}</small></p>
-            <button className='addProductButton' onClick={() => handleRemoveOrder(key)}>Remove Order</button>
+            <Button className='mb-2' variant='warning' onClick={() => handleRemoveOrder(key)}>Remove Order</Button>
         </div>
     );
 };

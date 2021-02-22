@@ -1,5 +1,6 @@
 .ship-form{
-    margin : 30px 100px;
+    margin : 0 auto;
+    width : 400px;
 }
 .ship-form input{
     display: block;
@@ -11,4 +12,9 @@
 }
 .error{
     color: red;
+}
+.thankYou-style{
+    height: 300px;
+    width: 500px;
+    margin : 0 auto;
 }

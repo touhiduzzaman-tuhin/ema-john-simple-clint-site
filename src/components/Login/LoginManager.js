@@ -3,7 +3,7 @@ import "firebase/auth";
 import firebaseConfig from './firebase.config';
 
 export const initializeFirebase = () => {
-    if(firebase.apps.length === 0) {
+    if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
     }
 }
@@ -24,6 +24,7 @@ export const handleGoogleSignIn = () => {
                 error: '',
                 success: true
             }
+            storeAuthToken();
             return signInUser;
         })
         .catch(error => {
@@ -113,12 +114,25 @@ const updateUserName = (name) => {
     const user = firebase.auth().currentUser;
 
     user.updateProfile({
-    displayName: name,
+        displayName: name,
     })
-    .then( result =>{
+        .then(result => {
 
-    })
-    .catch( error => {
+        })
+        .catch(error => {
 
+        });
+}
+
+// Store Auth Token
+
+const storeAuthToken = () => {
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+    .then(function (idToken) {
+        sessionStorage.setItem('token', idToken);
+        // Send token to your backend via HTTPS
+        // ...
+    }).catch(function (error) {
+        // Handle error
     });
 }

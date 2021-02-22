@@ -6,17 +6,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 import { Link } from 'react-router-dom';
+import { CircularProgress, LinearProgress } from '@material-ui/core';
+import { Button } from 'react-bootstrap';
 
 const Shop = () => {
     // const firstTen = fakeData.slice(0, 10);
+    document.title = 'Shop More';
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect( () => {
-        fetch('https://sheltered-plateau-00354.herokuapp.com/products')
+        fetch('https://sheltered-plateau-00354.herokuapp.com/products?search='+search)
         .then(response => response.json())
         .then( data => setProducts(data))
-    }, [])
+    }, [search])
+
     const handleAddProduct = (product) => {
         // console.log('Product added');
         // console.log(product);
@@ -68,16 +73,28 @@ const Shop = () => {
         // }
         // console.log(saveCart);
     }, [products])
+
+    const handleSearch = (event) => {
+        setSearch(event.target.value);
+        // console.log(event.target.value);
+    }
     return (
         <div className='main-shop-body'> 
             <div className='search-box'>
                 <p>
-                    <input autoFocus type="text" name="" className="searchProduct" id=""/>
+                    <input autoFocus onBlur={handleSearch} type="text" name="" className="searchProduct" id="" placeholder="Search Product"/>
+                    &nbsp;&nbsp; <Button variant='info'>Search</Button>
                     &nbsp;&nbsp; <FontAwesomeIcon icon={ faShoppingCart }></FontAwesomeIcon>
                     &nbsp; <span style={{color: 'red'}}>{cart.length}</span>
                 </p>
-            </div>           
-            <div className="shop-container">
+            </div> 
+
+            {
+                    products.length === 0 && <p style={{textAlign: 'center'}}>Loading... <LinearProgress />
+                    </p>
+            }   
+
+            <div className="shop-container">               
                 <div className="product-container">
                     {
                         products.map(product => <Product addToCartButton = {true} key={product.key} handleAddProduct = {handleAddProduct} product={product}></Product>)
@@ -87,9 +104,9 @@ const Shop = () => {
                 <div className="cart-container">
                     <Cart cart={cart}>
                         <Link to="/review">
-                            <button className='addProductButton'>
+                            <Button variant='outline-success'>
                                 Order Review
-                            </button>
+                            </Button>
                         </Link>
                     </Cart>
                 </div>

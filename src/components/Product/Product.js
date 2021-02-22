@@ -1,6 +1,7 @@
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Product.css';
 
@@ -37,10 +38,10 @@ const Product = (props) => {
                         <p>Only <span className="stock-style">{stock}</span> Left in stock - Order Soon</p>
 
                         {
-                            addToCartButton === true && <button onClick={() => props.handleAddProduct(props.product)} className='addProductButton'> 
-                                <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
+                            addToCartButton === true && <Button variant="success" onClick={() => props.handleAddProduct(props.product)} className='addProductButton'> 
+                                <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon> &nbsp;
                                 Add To Cart
-                            </button>
+                            </Button>
                         }
                     </div>
                     <div className='features'>
