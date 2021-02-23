@@ -5,6 +5,7 @@ import { getDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import './Shipment.css';
 import happyImage from '../../images/giphy.gif';
+import OrderDetails from '../OrderDetails/OrderDetails';
 
 const Shipment = () => {
   document.title = 'Shipment';
@@ -43,7 +44,7 @@ const Shipment = () => {
       })
   }
 
-  console.log(watch("example"));
+  // console.log(watch("example"));
 
   let thankYou;
   if(orderPlaced){
@@ -80,6 +81,9 @@ const Shipment = () => {
           thankYou
         }
       </div>
+
+      {/* <OrderDetails></OrderDetails> */}
+
     </div>
   );
 };

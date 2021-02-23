@@ -38,9 +38,9 @@ const Product = (props) => {
                         <p>Only <span className="stock-style">{stock}</span> Left in stock - Order Soon</p>
 
                         {
-                            addToCartButton === true && <Button variant="success" onClick={() => props.handleAddProduct(props.product)} className='addProductButton'> 
-                                <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon> &nbsp;
-                                Add To Cart
+                            addToCartButton === true && <Button variant="secondary" onClick={() => props.handleAddProduct(props.product)} className='addProductButton'> 
+                                <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
+                                <span style={{paddingLeft: '10px'}}>Add To Cart</span>
                             </Button>
                         }
                     </div>

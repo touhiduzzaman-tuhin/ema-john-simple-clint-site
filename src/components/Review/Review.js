@@ -6,6 +6,8 @@ import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import happyImage from '../../images/giphy.gif';
 import { Button } from 'react-bootstrap';
+import { faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Review = () => {
     document.title = 'Product Review';
@@ -52,6 +54,7 @@ const Review = () => {
     if(orderPlaced){
         thankYOu = <img src={happyImage} alt=""/>
     }
+    console.log(cart);
     return (
         <div className="text-center">
             <h3>Total Selected Product {cart.length}</h3>
@@ -67,7 +70,10 @@ const Review = () => {
                 <div className="cart-container">
                     <Cart cart={cart}>
                         <Link>
-                            <Button onClick={handlePlaceOrder}>Prosed Check-Out</Button>
+                            <Button onClick={handlePlaceOrder}>
+                                <FontAwesomeIcon icon={faMoneyCheckAlt}></FontAwesomeIcon>
+                                <span style={{paddingLeft: '10px'}}>Prosed Check-Out</span>
+                            </Button>
                         </Link>
                     </Cart>
                 </div>

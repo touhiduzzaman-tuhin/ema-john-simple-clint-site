@@ -1,6 +1,6 @@
 .header{
-    text-align: center;
     /* width: 77.5%; */
+    text-align: center;
 }
 .header img{
     height: 80px;
@@ -20,4 +20,11 @@ nav a:hover{
     background-color: gray;
     color: white;
     text-decoration: none;
+}
+.name-style{
+    color : lightsalmon;
+
+}
+.name-style:hover{
+    background-color : black;
 }

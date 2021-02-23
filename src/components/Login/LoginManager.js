@@ -68,6 +68,7 @@ export const handleFacebookSignIn = () => {
                 error: '',
                 success: true
             }
+            storeAuthToken();
             return facebookUser;
         })
         .catch(error => {
@@ -83,6 +84,7 @@ export const createUserWithEmailAndPassword = (name, email, password) => {
             newUserInfo.error = '';
             newUserInfo.success = true;
             updateUserName(name);
+            storeAuthToken();
             return newUserInfo;
         })
         .catch(error => {
@@ -99,6 +101,7 @@ export const SignInWithEmailAndPassword = (email, password) => {
             const newUserInfo = result.user;
             newUserInfo.error = '';
             newUserInfo.success = true;
+            storeAuthToken();
             return newUserInfo;
         })
         .catch(error => {

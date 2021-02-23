@@ -3,7 +3,7 @@ import './Shop.css'
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart, faStar } from '@fortawesome/free-solid-svg-icons';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 import { Link } from 'react-router-dom';
 import { CircularProgress, LinearProgress } from '@material-ui/core';
@@ -17,9 +17,13 @@ const Shop = () => {
     const [search, setSearch] = useState('');
 
     useEffect( () => {
-        fetch('https://sheltered-plateau-00354.herokuapp.com/products?search='+search)
+        fetch(`https://sheltered-plateau-00354.herokuapp.com/products?search=${search}`)
         .then(response => response.json())
-        .then( data => setProducts(data))
+        .then( data => {
+            setProducts(data)
+            // console.log(data);
+            document.getElementById('searchProduct').value = '';
+        })
     }, [search])
 
     const handleAddProduct = (product) => {
@@ -82,8 +86,12 @@ const Shop = () => {
         <div className='main-shop-body'> 
             <div className='search-box'>
                 <p>
-                    <input autoFocus onBlur={handleSearch} type="text" name="" className="searchProduct" id="" placeholder="Search Product"/>
-                    &nbsp;&nbsp; <Button variant='info'>Search</Button>
+                    <input autoFocus type="text" onBlur={handleSearch} name="" className="searchProduct" id="searchProduct" placeholder="Search Product"/>
+                    &nbsp;&nbsp; 
+                    <Button variant='primary'>
+                        <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
+                        <span style={{paddingLeft: '10px'}}>Search</span>
+                    </Button>
                     &nbsp;&nbsp; <FontAwesomeIcon icon={ faShoppingCart }></FontAwesomeIcon>
                     &nbsp; <span style={{color: 'red'}}>{cart.length}</span>
                 </p>
@@ -95,7 +103,7 @@ const Shop = () => {
             }   
 
             <div className="shop-container">               
-                <div className="product-container">
+                <div className="product-container">                   
                     {
                         products.map(product => <Product addToCartButton = {true} key={product.key} handleAddProduct = {handleAddProduct} product={product}></Product>)
                     }
@@ -105,7 +113,8 @@ const Shop = () => {
                     <Cart cart={cart}>
                         <Link to="/review">
                             <Button variant='outline-success'>
-                                Order Review
+                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+                                <span style={{paddingLeft: '10px'}}>Order Review</span>
                             </Button>
                         </Link>
                     </Cart>

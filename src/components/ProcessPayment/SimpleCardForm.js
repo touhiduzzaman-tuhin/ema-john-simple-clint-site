@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 // import {useElements, useStripe} from '@stripe/stripe-js';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { Button } from 'react-bootstrap';
+import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SimpleCardForm = ({handlePayment}) => {
   const stripe = useStripe();
@@ -47,7 +49,8 @@ const SimpleCardForm = ({handlePayment}) => {
         <CardElement />
         <p align="center">
           <Button className='mt-4' type="submit" disabled={!stripe}>
-            Pay Now
+            <FontAwesomeIcon icon={faCreditCard}></FontAwesomeIcon>
+            <span style={{paddingLeft: '10px'}}>Pay Now</span>
           </Button>
         </p>
       </form>
